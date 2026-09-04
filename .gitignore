@@ -1,0 +1,32 @@
+# ---------------------------------------------------------------------------
+# PUBLISH BRANCH ("site"). This branch is pushed to a PUBLIC repo and served
+# by GitHub Pages, so it carries the site and nothing else.
+#
+# The working tree is shared with the private branches, which means the files
+# below are sitting on disk right next to the site while this branch is
+# checked out. Without these rules a single `git add -A` publishes the career
+# notes, the decision log and the internal audits. Keep them listed.
+# ---------------------------------------------------------------------------
+
+# Private working files — never published.
+CLAUDE.md
+MEMORY.md
+MILESTONES.md
+docs/
+tools/
+scratch/
+node_modules/
+
+# The dashboard is a LOCAL tool. It reads and writes data/projects.js on disk
+# through the File System Access API; published, it would just be an internal
+# control panel anyone can read. Run it locally with tools/devserve.py.
+admin.html
+admin.js
+admin.css
+
+# Source material and oversized media — see the private branch's .gitignore
+# for the full reasoning. Repeated here because gitignore is per branch.
+assets/pdf_projects/
+assets/projects/house-walkthrough/house-walkthrough.mp4
+assets/projects/opencv-grasshopper/comvis.gif
+assets/projects/pcg-runtime/pcg-runtime-clip.mp4

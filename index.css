@@ -1,0 +1,3269 @@
+/* ==========================================================================
+   Arch. Alaa Mahmoud — GameDev Poppins Portfolio Theme
+   Informed by Amy Elliott's GameDev Portfolio (https://gamedev.amy-portfolio.com/)
+   ========================================================================== */
+
+/* Design Tokens & Colors */
+:root {
+  --font-main: 'Poppins', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+/* 📐 Architectural Vision Mode */
+[data-theme="art"] {
+  --bg-pitch: #000000;
+  --bg-surface: #0E0E0E;
+  --bg-card: #141414;
+  --bg-card-hover: #1A1A1A;
+  
+  --text-primary: #FFFFFF;
+  --text-muted: #A0A0A0;
+  --accent: #E5C483; /* Warm Champagne Gold Accent */
+  --accent-rgb: 229, 196, 131;
+  
+  --border: rgba(255, 255, 255, 0.12);
+  --border-active: rgba(229, 196, 131, 0.6);
+  /* Interactive chrome only — chips and pills. At --border's 0.12 these
+     measured 1.27:1 and read as labels rather than buttons (D-019).
+     --border itself is left alone: every card and panel uses it. */
+  --border-control: rgba(255, 255, 255, 0.34);
+  /* Replaces opacity on small text. Opacity compounds against the background,
+     which is what dropped the chip counts to 3.56:1 and failed AA. */
+  --text-dim: #7C7C7C;
+}
+
+/* 💻 Engine Mode */
+[data-theme="dev"] {
+  --bg-pitch: #000000;
+  --bg-surface: #080C14;
+  --bg-card: #0E1422;
+  --bg-card-hover: #141C2E;
+  
+  --text-primary: #FFFFFF;
+  --text-muted: #8E9CB0;
+  --accent: #00F0FF; /* Electric Cyan Accent */
+  --accent-rgb: 0, 240, 255;
+  
+  --border: rgba(0, 240, 255, 0.15);
+  --border-active: rgba(0, 240, 255, 0.6);
+  --border-control: rgba(0, 240, 255, 0.42);
+  --text-dim: #6E7C90;
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-pitch);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 🌐 Global Fixed Full-Site Solid Dot Matrix Canvas */
+#globalCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.70;
+  z-index: 0;
+}
+
+/* Accessible Keyboard Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+  border-radius: 4px;
+}
+
+/* Amy-Style Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333 !important;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent) !important;
+}
+
+/* Layout Container */
+.container {
+  /* Was 1240px, which left ~330px of dead margin either side on a 1900px
+     screen. Safe to widen: every prose block below caps its own measure
+     (hero 900, section ledes 680–760, body copy 62–66ch), so the extra width
+     goes to the grid and the stage rather than stretching text (D-028). */
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.highlight-text {
+  color: var(--accent);
+  display: inline-block;
+}
+
+/* 🌟 Floating Fixed Bottom-Right Contact Me CTA Button */
+.floating-contact-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 32px;
+  z-index: 9999;
+  background: var(--accent);
+  color: #000000;
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 12px 22px;
+  border-radius: 30px;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(var(--accent-rgb), 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+  pointer-events: auto;
+}
+
+.floating-contact-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), 0 0 28px rgba(var(--accent-rgb), 0.7);
+}
+
+/* 🌟 Architectural Ruler Gauge Progress Tracker Sidebar */
+.sidebar-tracker {
+  position: fixed;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  pointer-events: auto;
+}
+
+.sidebar-tracker a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.ruler-gauge-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Ruler Vertical Line Axis */
+.ruler-axis {
+  position: relative;
+  width: 2px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+
+/* Active Sliding Indicator Pill along Ruler */
+.ruler-slider-indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.9);
+  transition: top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ruler-ticks-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;
+}
+
+.ruler-tick {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.tick-mark {
+  width: 10px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: var(--transition);
+}
+
+.tick-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.ruler-tick:hover .tick-mark, .ruler-tick.active .tick-mark {
+  background: var(--accent);
+  width: 16px;
+}
+
+.ruler-tick:hover .tick-num, .ruler-tick.active .tick-num {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* Hover Tooltip */
+.ruler-tooltip {
+  position: absolute;
+  left: 42px;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+}
+
+.ruler-tick:hover .ruler-tooltip {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* 🌟 Top Centered Floating Control Bar */
+.top-control-bar {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+/* Centered Mode Switcher Pill Container */
+.mode-toggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--border);
+  padding: 4px;
+  border-radius: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+  width: 270px;
+  justify-content: space-between;
+}
+
+.mode-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.mode-btn i {
+  font-size: 0.85rem;
+}
+
+.mode-btn.active {
+  background: var(--accent);
+  color: #000000;
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.4);
+}
+
+/* Dynamic Fade-In / Fade-Out Section Label */
+.scroll-section-label {
+  width: 270px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--accent);
+  background: rgba(0, 0, 0, 0.92);
+  border: 1px solid var(--border);
+  padding: 8px 0;
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+  pointer-events: none;
+}
+
+.scroll-section-label.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Minimalist Typography Hero Section */
+.hero-section {
+  position: relative;
+  z-index: 1;
+  padding: 160px 0 110px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(var(--accent-rgb), 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-typography-container {
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.hero-heading {
+  font-size: clamp(2.1rem, 5.5vw, 4rem);
+  line-height: 1.12;
+  font-weight: 900;
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+}
+
+.hero-subtext {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 760px;
+  margin: 0 auto 32px;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: #000000;
+  box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.4);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.6);
+}
+
+.line-btn {
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.line-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--text-primary);
+}
+
+/* Bio Section */
+.bio-section {
+  position: relative;
+  z-index: 1;
+  padding: 70px 0 90px;
+  background: transparent;
+}
+
+.bio-card {
+  background: rgba(14, 14, 14, 0.92);
+  border: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 44px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.bio-text h2 {
+  margin-bottom: 16px;
+}
+
+.bio-lead {
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.bio-body {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.bio-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.pillar i {
+  font-size: 1.2rem;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.12);
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillar h4 {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.pillar p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.bio-contact-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-contact-box h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.bio-contact-box p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.quick-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.qc-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+.qc-item i {
+  color: var(--accent);
+  width: 20px;
+}
+
+.btn-full-contact {
+  background: var(--accent);
+  color: #000000;
+  padding: 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.btn-full-contact:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 18px rgba(var(--accent-rgb), 0.4);
+}
+
+/* Sections Base */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 90px 0;
+  background: transparent;
+}
+
+.section-title-wrap {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto 40px;
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.pill {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--border-control);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.pill.active, .pill:hover {
+  background: var(--accent);
+  color: #000000;
+  border-color: var(--accent);
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.35);
+}
+
+/* Creative Stage Screen */
+.stage-container {
+  margin-bottom: 36px;
+}
+
+.stage-screen {
+  position: relative;
+  height: 440px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 35px rgba(var(--accent-rgb), 0.15), 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+.stage-image {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  transition: var(--transition);
+}
+
+.stage-overlay-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, transparent);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stage-badge-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.stage-project-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.stage-project-desc {
+  color: var(--text-muted);
+  max-width: 720px;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.stage-tech-list {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.open-soul-btn {
+  background: var(--accent);
+  color: #000000;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.open-soul-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 18px rgba(var(--accent-rgb), 0.4);
+}
+
+/* 🌟 Clean Responsive 3-Column Projects Grid with Hover Zoom */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.grid-card {
+  background: rgba(20, 20, 20, 0.92);
+  border: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.grid-card:hover, .grid-card.active {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(var(--accent-rgb), 0.2);
+}
+
+.grid-card.active {
+  background: var(--bg-card-hover);
+}
+
+.card-thumb {
+  height: 150px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+}
+
+.grid-card:hover .card-thumb {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.card-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.card-footer {
+  margin-top: auto;
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid-card:hover .card-footer i {
+  transform: translateX(4px);
+  transition: transform 0.25s ease;
+}
+
+/* Digital Twin Terminal Shell */
+.twin-wrapper {
+  background: rgba(14, 14, 14, 0.92);
+  border: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.twin-intro h2 {
+  margin-bottom: 10px;
+}
+
+.twin-intro p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 0.92rem;
+}
+
+.prompt-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chip-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.chip-btn:hover {
+  transform: translateX(6px);
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.twin-terminal-shell {
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: #0E0E0E;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.term-dot.red { background: #FF5F56; }
+.term-dot.yellow { background: #FFBD2E; }
+.term-dot.green { background: #27C93F; }
+
+.term-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-left: 8px;
+  letter-spacing: 1px;
+}
+
+.twin-chat-container {
+  padding: 20px;
+  height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chat-author {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.chat-text {
+  font-size: 0.92rem;
+}
+
+.twin-input-wrap {
+  display: flex;
+  border-top: 1px solid var(--border);
+  background: #0E0E0E;
+}
+
+.twin-text-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.twin-text-input:focus {
+  outline: none;
+}
+
+.twin-send-btn {
+  background: var(--accent);
+  color: #000000;
+  border: none;
+  padding: 0 20px;
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.twin-send-btn:hover {
+  background: #FFFFFF;
+}
+
+/* Direct Contact Action Cards */
+.contact-container {
+  text-align: center;
+}
+
+.contact-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 40px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-action-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.action-card {
+  background: rgba(14, 14, 14, 0.92);
+  border: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.action-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(var(--accent-rgb), 0.2);
+}
+
+.action-card i {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 16px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
+}
+
+.action-card:hover i {
+  transform: translateY(-4px) scale(1.1);
+}
+
+.action-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.card-val {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.card-hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.highlight-card {
+  background: var(--bg-card);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2);
+}
+
+/* Modal Drawer & Rich Media Container */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(16px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 840px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+/* Rich Modal Media Viewport (Videos, Images, Media Carousels) */
+.modal-media-container {
+  margin: 18px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.modal-video-player {
+  width: 100%;
+  max-height: 360px;
+  display: block;
+  background: #000000;
+}
+
+/* Footer */
+.footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: transparent;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ♿ Respect User Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ruler-slider-indicator,
+  .scroll-section-label,
+  .grid-card:hover,
+  .action-card:hover,
+  .floating-contact-btn:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Media Queries & Responsive Adaptability */
+@media (max-width: 1360px) {
+  .sidebar-tracker { display: none !important; }
+}
+
+@media (max-width: 992px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .bio-grid { grid-template-columns: 1fr; }
+  .twin-wrapper { grid-template-columns: 1fr; }
+  .contact-action-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .stage-screen { height: auto; min-height: 400px; }
+  .stage-overlay-content { padding: 20px; }
+  .bio-card, .twin-wrapper { padding: 22px 18px; }
+  .modal-content { padding: 24px 18px; }
+  
+  /* Touch Targets (Minimum 44px) */
+  .mode-btn { min-height: 44px; padding: 10px 16px; }
+  .pill { min-height: 44px; padding: 10px 18px; display: inline-flex; align-items: center; }
+  .chip-btn { min-height: 44px; display: flex; align-items: center; }
+  .floating-contact-btn { bottom: 16px; right: 16px; min-height: 44px; padding: 12px 20px; font-size: 0.76rem; }
+}
+
+/* ==========================================================================
+   Additions — imagery, archive, gallery/lightbox and case-study panels.
+   Appended so the original token set and layout above stay untouched.
+   ========================================================================== */
+
+/* --- Hero: capability list replaces the old fabricated telemetry badge --- */
+.hero-capabilities {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+  margin: 30px 0 10px;
+}
+
+.hero-capabilities li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  letter-spacing: 0.4px;
+  color: var(--text-primary);
+  background: rgba(var(--accent-rgb), 0.06);
+  border: 1px solid var(--border-control);
+  border-radius: 22px;
+  padding: 8px 16px;
+}
+
+.hero-capabilities i {
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+/* --- Section lede ------------------------------------------------------- */
+.section-lede {
+  max-width: 62ch;
+  margin: 12px auto 0;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* --- Tier 1 cards: real plates, text below ------------------------------ */
+.grid-card {
+  padding: 0;                 /* thumb now runs to the card edge */
+}
+
+.card-thumb {
+  height: 168px;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: #0B0B0D;
+}
+
+.card-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1.4px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.grid-empty {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 28px 0;
+}
+
+.archive-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0B0B0D;
+  transition: var(--transition);
+}
+
+.archive-card:hover,
+.archive-card:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65),
+              0 0 22px rgba(var(--accent-rgb), 0.18);
+}
+
+.archive-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+  filter: saturate(0.85) brightness(0.82);
+}
+
+.archive-card:hover .archive-img,
+.archive-card:focus-visible .archive-img {
+  transform: scale(1.05);
+  filter: saturate(1) brightness(1);
+}
+
+.archive-meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 44px 18px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.94) 32%, transparent);
+  pointer-events: none;
+}
+
+.archive-badge {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1.4px;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.archive-title {
+  font-size: 1.06rem;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+
+.archive-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.archive-count {
+  position: absolute;
+  top: -30px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.66);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  backdrop-filter: blur(6px);
+}
+
+/* --- Modal typography --------------------------------------------------- */
+body.modal-open { overflow: hidden; }
+
+.modal-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  line-height: 1.22;
+  margin: 10px 0 6px;
+}
+
+.modal-tech {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.modal-meta-line {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.modal-desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 12px 0;
+}
+
+.modal-detail {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+  margin: 14px 0 4px;
+}
+
+.modal-proof {
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.modal-proof i { color: #10B981; }
+
+/* --- Case-study demo panels -------------------------------------------- */
+.demo-panel {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.demo-heading {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.6px;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.demo-note {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.demo-canvas {
+  width: 100%;
+  height: 180px;
+  background: #05070A;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+#pcgCanvas,
+.demo-canvas-square {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  margin: 10px auto 0;
+  display: block;
+}
+
+.demo-code {
+  background: #05070A;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.65;
+  color: #9FE8C0;
+  overflow-x: auto;
+}
+
+.demo-code .c { color: #5E7A8C; }
+
+.demo-stack { display: flex; flex-direction: column; gap: 12px; }
+
+.demo-slider {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.demo-slider input { width: 100%; accent-color: var(--accent); }
+
+.demo-readout {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  min-width: 3.4em;
+  text-align: right;
+}
+
+.demo-viewport {
+  height: 180px;
+  margin-top: 6px;
+  border: 1px dashed rgba(var(--accent-rgb), 0.5);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: crosshair;
+  transition: transform 0.12s ease-out;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 12px, transparent 12px 24px),
+    #07090C;
+}
+
+.demo-viewport i { font-size: 2.2rem; color: var(--accent); }
+
+.demo-viewport span {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.demo-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.demo-flow.vertical { flex-direction: column; align-items: flex-start; }
+
+.flow-node {
+  flex: 1 1 150px;
+  min-width: 140px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.flow-node span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-primary);
+}
+
+.flow-node small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.flow-node.truth {
+  border-color: rgba(var(--accent-rgb), 0.7);
+  background: rgba(var(--accent-rgb), 0.07);
+}
+
+.flow-node.truth span { color: var(--accent); }
+
+.flow-arrow {
+  align-self: center;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.demo-quote {
+  margin-top: 16px;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+/* --- Gallery grid inside the archive modal ------------------------------ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.gallery-cell {
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #0B0B0D;
+  cursor: zoom-in;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.gallery-cell:hover,
+.gallery-cell:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.gallery-cell img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* --- Lightbox ----------------------------------------------------------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 72px;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox-media-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  max-height: 82vh;
+}
+
+.lightbox img,
+.lightbox video {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  background: rgba(var(--accent-rgb), 0.18);
+  border-color: var(--accent);
+}
+
+.lightbox-close {
+  top: 20px; right: 24px;
+  width: 42px; height: 42px;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.lightbox-nav { top: 50%; transform: translateY(-50%); width: 46px; height: 46px; }
+.lightbox-nav.prev { left: 16px; }
+.lightbox-nav.next { right: 16px; }
+
+.lightbox-footer-info {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.lightbox-caption {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.lightbox-count {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* --- Media Embedding: Stage, Cards & Modals ----------------------------- */
+
+/* Stage Video & GIF preview */
+.stage-media-video,
+.stage-media-gif {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+/* Card Media Type Pills */
+.card-thumb {
+  position: relative;
+}
+
+.card-media-pill {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(11, 14, 20, 0.85);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 2;
+}
+
+/* Modal Media Embeds */
+.modal-media-embed {
+  margin: 18px 0 24px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #080A0E;
+}
+
+.video-player-wrap {
+  width: 100%;
+  background: #000;
+  position: relative;
+}
+
+.modal-video-player {
+  width: 100%;
+  max-height: 480px;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
+.gif-player-wrap {
+  position: relative;
+  cursor: zoom-in;
+  overflow: hidden;
+  background: #000;
+}
+
+.modal-gif-image {
+  width: 100%;
+  max-height: 440px;
+  display: block;
+  object-fit: contain;
+}
+
+.gif-zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(4px);
+}
+
+.modal-media-caption {
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-media-caption i {
+  color: var(--accent);
+}
+
+/* Modal Footer & External Link */
+.modal-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-live-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(var(--accent-rgb), 0.12);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-live-external:hover {
+  background: var(--accent);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.modal-gallery-section {
+  margin-top: 24px;
+}
+
+/* --- Responsive --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .archive-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .demo-flow { flex-direction: column; }
+  .flow-arrow { align-self: flex-start; }
+}
+
+@media (max-width: 640px) {
+  .hero-capabilities { gap: 8px 18px; }
+  .hero-capabilities li { font-size: 0.82rem; padding: 7px 13px; }
+  .lightbox { padding: 16px; }
+  .lightbox-nav { width: 38px; height: 38px; }
+  .lightbox-nav.prev { left: 6px; }
+  .lightbox-nav.next { right: 6px; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .demo-slider { grid-template-columns: 1fr; gap: 6px; }
+  .demo-readout { text-align: left; }
+  .modal-footer-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* --- Overlay hygiene ---------------------------------------------------- */
+body.modal-open .floating-contact-btn,
+body.modal-open .top-control-bar,
+body.modal-open .sidebar-tracker {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+section[id] { scroll-margin-top: 86px; }
+
+.archive-count {
+  top: auto;
+  bottom: 16px;
+  right: 16px;
+}
+
+.archive-meta { padding-right: 96px; }
+
+
+/* ==========================================================================
+   Capability lens + case-study spine (decisions.md D-014)
+
+   Deliberately SUBORDINATE to .pill above it: the category pills fill with
+   the accent when active, the lens chips only outline. Two filter rows that
+   both filled solid would read as competing controls rather than as a coarse
+   filter and a cross-cutting lens.
+   ========================================================================== */
+
+.capability-lens {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: -12px 0 30px;
+}
+
+.cap-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px solid var(--border-control);
+  color: var(--text-muted);
+  padding: 7px 13px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cap-chip:hover {
+  border-color: var(--border-active);
+  color: var(--text-primary);
+}
+
+.cap-chip.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+}
+
+.cap-chip.active .cap-n { border-left-color: rgba(var(--accent-rgb), 0.4); }
+
+.cap-chip.cap-clear {
+  border-style: dashed;
+  opacity: 0.75;
+}
+
+/* --- Read-only chips on cards and in modals -------------------------------- */
+
+.card-caps,
+.modal-caps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0 12px;
+}
+
+.cap-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 7px;
+  white-space: nowrap;
+}
+
+.modal-caps { margin: 14px 0 22px; }
+.modal-caps .cap-tag { font-size: 0.72rem; padding: 5px 10px; }
+
+/* --- The spine ------------------------------------------------------------
+   A definition list, not prose. The point is that every case study answers the
+   same questions in the same order, so the reader builds the template once and
+   skims every later project against it. */
+
+.spine {
+  border-left: 2px solid var(--border);
+  padding-left: 20px;
+  margin: 26px 0;
+  display: grid;
+  gap: 18px;
+}
+
+.spine-row { display: grid; gap: 5px; }
+
+.spine-k {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.95;
+}
+
+.spine-v {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* `proves` is the CLAIM and sits apart from `.modal-proof`, which is the
+   CITATION. Keeping them visually distinct is the D-010 lesson made structural:
+   what the work shows and what the evidence is are two different statements. */
+.spine-proves {
+  border: 1px solid var(--border-active);
+  border-radius: 6px;
+  background: rgba(var(--accent-rgb), 0.06);
+  padding: 18px 20px;
+  margin: 26px 0 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.spine-proves p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .capability-lens { gap: 6px; margin-bottom: 24px; }
+  .cap-chip { font-size: 0.72rem; padding: 6px 11px; }
+  .spine { padding-left: 14px; gap: 15px; }
+  .spine-v { font-size: 0.88rem; }
+}
+
+/* A capability that returns nothing under the current category pill. Disabled
+   rather than hidden: the range is part of the message, and chips that appeared
+   and vanished as you moved between pills would read as a glitch. */
+.cap-chip.cap-zero {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.cap-chip.cap-zero:hover {
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+/* --- Capability matrix (About section) -------------------------------------
+   Nine rows, generated from the live data. The bar is comparative only — it is
+   scaled to the largest row, and the number beside it is the real count. No
+   axis, because there is no unit here worth implying precision about. */
+
+.cap-matrix-wrap {
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.cap-matrix-lede {
+  max-width: 62ch;
+  margin: 10px 0 26px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.cap-matrix { display: grid; gap: 2px; }
+
+.cap-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.1fr) minmax(60px, 1fr) 34px minmax(0, 1.4fr);
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  padding: 11px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cap-row:hover,
+.cap-row:focus-visible { background: var(--bg-card-hover); }
+
+.cap-row-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  color: var(--text-primary);
+}
+
+.cap-row-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.cap-row-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+  opacity: 0.75;
+}
+
+.cap-row-n {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-align: right;
+}
+
+.cap-row-lead {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  /* The lead example is the first thing to go — the label and the count carry
+     the argument on their own. */
+  .cap-row { grid-template-columns: minmax(0, 1fr) 56px 30px; gap: 10px; }
+  .cap-row-lead { display: none; }
+}
+
+/* --- Spline UV demo -------------------------------------------------------
+   Taller than the standard demo canvas because it carries two ribbons stacked,
+   and the comparison only works if both are visible at once. */
+
+.demo-canvas-tall { height: 300px; }
+
+.demo-hint {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+.uv-metric {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 22px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(var(--accent-rgb), 0.04);
+}
+
+.uv-metric-row {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.uv-metric-row b {
+  font-size: 1.05rem;
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.uv-metric-row code {
+  font-size: 0.78rem;
+  color: var(--text-primary);
+}
+
+/* The provenance line. It matters that this number is measured in the visitor's
+   own browser rather than typed into the copy — that is the difference between
+   a demo and a claim (CLAUDE.md rule 3). */
+.uv-metric-note {
+  flex-basis: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  .demo-canvas-tall { height: 240px; }
+}
+
+/* --- C++ AST compiler loop -------------------------------------------------
+   The two verdict rows are the panel's argument: "model says" and "cl.exe says"
+   disagree twice before they agree. They are deliberately given equal weight so
+   the disagreement is the thing you notice. */
+
+.loop-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.loop-btn {
+  background: var(--accent);
+  color: #000;
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.loop-btn:hover { box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.35); }
+
+.loop-iter {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* The honesty label. It sits in the UI, not only in the note underneath,
+   because the note is the part people skip (D-005). */
+.loop-scripted {
+  flex-basis: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.3px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.loop-code { min-height: 128px; }
+.loop-code .l-bad { color: #FF6B6B; }
+.loop-code .l-fix { color: #7CFFB2; }
+
+.loop-verdicts { display: grid; gap: 8px; margin-top: 12px; }
+
+.loop-verdict {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 13px;
+  border: 1px solid var(--border);
+  border-left-width: 3px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.loop-who {
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.loop-what { color: var(--text-primary); word-break: break-word; }
+
+.loop-verdict.is-ok  { border-left-color: #7CFFB2; }
+.loop-verdict.is-bad { border-left-color: #FF6B6B; }
+.loop-verdict.is-bad .loop-what { color: #FF9B9B; }
+
+@media (max-width: 600px) {
+  .loop-verdict { grid-template-columns: 1fr; gap: 3px; }
+}
+
+/* --- GH <-> MCP governance verdict ----------------------------------------- */
+
+.gov-verdict {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.gov-row {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-left-width: 3px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.gov-kind {
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.gov-text { color: var(--text-primary); word-break: break-word; }
+
+.gov-row.is-refused { border-left-color: #FF6B6B; }
+.gov-row.is-refused .gov-text { color: #FF9B9B; }
+.gov-row.is-granted { border-left-color: #7CFFB2; }
+
+.gov-note {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.3px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .gov-row { grid-template-columns: 1fr; gap: 3px; }
+}
+
+/* --- UE world -> JSON hierarchy --------------------------------------------
+   Two panes of the same object. They are the same height and weight on purpose:
+   neither view is the "real" one, and the correspondence between them is the
+   product. */
+
+.hier-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 10px;
+}
+
+.hier-pane {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #05070A;
+  overflow: hidden;
+}
+
+.hier-head {
+  padding: 8px 11px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 1.4px;
+  color: var(--text-muted);
+}
+
+.hier-tree { max-height: 300px; overflow-y: auto; padding: 6px 0; }
+
+.hier-node {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  background: transparent;
+  border: 0;
+  border-left: 2px solid transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.hier-node:hover { background: rgba(255, 255, 255, 0.04); }
+
+.hier-node.is-sel {
+  background: rgba(var(--accent-rgb), 0.10);
+  border-left-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.hier-ico { opacity: 0.65; font-size: 0.62rem; }
+.hier-id { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.hier-type {
+  font-size: 0.54rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.hier-json {
+  margin: 0;
+  padding: 10px 12px;
+  max-height: 300px;
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+}
+
+.hier-json .j-str { color: var(--accent); }
+
+.hier-json .j-node.is-sel {
+  display: inline-block;
+  background: rgba(var(--accent-rgb), 0.10);
+  outline: 1px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 3px;
+}
+
+.hier-stat {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3px;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+  .hier-wrap { grid-template-columns: 1fr; }
+  .hier-tree, .hier-json { max-height: 210px; }
+}
+
+/* ============================================================
+   EXPERIENCE TIMELINE ("Where this has run")
+   Roles only. Lives at the foot of the bio card, under the
+   capability matrix. Colours come from the mode tokens, so it
+   themes with VISION/ENGINE for free.
+   ============================================================ */
+
+.track-wrap {
+  margin-top: 44px;
+  padding-top: 34px;
+  border-top: 1px solid var(--border);
+}
+
+.track-lede {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 62ch;
+  margin: 8px 0 26px;
+}
+
+.track-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* The spine. Sits under the date column, not through the text. */
+.track-list::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: var(--border);
+}
+
+.track-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 24px;
+  padding: 0 0 22px 30px;
+  position: relative;
+}
+
+.track-row:last-child {
+  padding-bottom: 0;
+}
+
+/* Node on the spine. */
+.track-row::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 7px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--text-muted);
+  transition: var(--transition);
+}
+
+.track-row.track-current::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.18);
+}
+
+.track-when {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.track-dates {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.track-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border: 1px solid var(--border-active);
+  border-radius: 3px;
+  padding: 2px 7px;
+}
+
+.track-what h4 {
+  font-size: 0.98rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.track-org {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.track-what p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 66ch;
+}
+
+@media (max-width: 720px) {
+  .track-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .track-when {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+/* Platform-hosted video embed (YouTube). 16:9, fills the modal media slot. */
+.video-embed-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.modal-video-embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Credit line under an embed. Quiet, but on the page. */
+.modal-media-credit {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+/* ============================================================
+   D-017 — POSITIONING: engagement doors, ownership evidence,
+   and the mode toggle in its new home inside the work section.
+   ============================================================ */
+
+/* --- Body-of-work switch, now a project filter, not an identity switch --- */
+.work-modes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* --- "Beyond writing the code" — scope of responsibility ---------------- */
+.owned-wrap {
+  margin-top: 44px;
+  padding-top: 34px;
+  border-top: 1px solid var(--border);
+}
+
+.owned-lede {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 64ch;
+  margin: 8px 0 24px;
+}
+
+.owned-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px 32px;
+}
+
+.owned-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.owned-list i {
+  font-size: 0.95rem;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.12);
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.owned-list h4 {
+  font-size: 0.92rem;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.owned-list p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --- The three doors ---------------------------------------------------- */
+.engage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.engage-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 30px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.engage-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+  transform: translateY(-3px);
+}
+
+/* The middle door is the one that matches what he has actually been doing. */
+.engage-card-lead {
+  border-color: var(--border-active);
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.14);
+}
+
+.engage-step {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.engage-card h3 {
+  font-size: 1.1rem;
+  margin: 8px 0 12px;
+}
+
+/* The visitor's own words, so they recognise themselves in one of the three. */
+.engage-for {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding-left: 12px;
+  border-left: 2px solid var(--border-active);
+  margin-bottom: 14px;
+}
+
+.engage-card > p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.engage-cta {
+  margin-top: auto;
+  padding-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.engage-cta:hover {
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .engage-card { padding: 24px 20px 22px; }
+  .owned-list { gap: 16px; }
+}
+
+/* Outbound credential link. Inherits the accent it sits in; underlined on
+   hover only, so the timeline does not read as a wall of links. */
+.track-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(var(--accent-rgb), 0.45);
+  transition: var(--transition);
+}
+
+.track-link:hover,
+.track-link:focus-visible {
+  border-bottom-color: var(--accent);
+  border-bottom-style: solid;
+}
+
+/* ============================================================
+   D-019 — the skill lens as a disclosure.
+
+   It used to sit open, adding nine 10.6px chips with a 1.28:1
+   border to a strip that already held eight controls. Closed by
+   default; the toggle states what it is and how many.
+   ============================================================ */
+
+.lens-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  border: 1px dashed var(--border-control);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.lens-toggle:hover,
+.lens-toggle:focus-visible {
+  border-color: var(--border-active);
+  color: var(--text-primary);
+}
+
+/* Open, or carrying an applied capability — either way it is doing something,
+   so it stops looking like an optional extra. */
+.lens-toggle.open {
+  border-style: solid;
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+}
+
+.lens-caret {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+}
+
+.lens-toggle.open .lens-caret {
+  transform: rotate(180deg);
+}
+
+.lens-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* The floating contact button sits over the footer's right-hand text at the
+   bottom of the page, and is redundant once the contact section is on screen. */
+.floating-contact-btn.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lens-caret { transition: none; }
+}
+
+/* The claim the work supports, on the card face (D-019 follow-up).
+   Set apart from the description by a rule and the accent: the description
+   says what the project is, this says what it demonstrates. */
+.card-proves {
+  margin-top: 12px;
+  padding-left: 11px;
+  border-left: 2px solid var(--border-active);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.card-proves::before {
+  content: 'PROVES';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   D-021 — FILTERS AS A RAIL BESIDE THE WORK
+
+   They used to stack above the grid as three unrelated centred
+   rows. Centred items read as peers, so nothing showed that the
+   body-of-work switch is the PARENT of the disciplines. Now one
+   panel, three labelled groups, sharing a left edge.
+   ============================================================ */
+
+/* The stage sits above the filter row and spans the container (D-022). */
+.stage-container { margin-bottom: 34px; }
+
+.work-layout {
+  display: grid;
+  grid-template-columns: 258px 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.work-rail {
+  position: sticky;
+  top: 24px;
+  background: rgba(14, 14, 14, 0.72);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 16px;
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dev"] .work-rail { background: rgba(8, 12, 20, 0.72); }
+
+.rail-group + .rail-group {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.rail-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.rail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* One row shape for BOTH discipline and skill, so the two levels read as one
+   control rather than two widgets that happen to sit near each other. */
+.rail-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 7px 10px;
+  color: var(--text-muted);
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.rail-item:hover:not(:disabled) {
+  background: rgba(var(--accent-rgb), 0.07);
+  color: var(--text-primary);
+}
+
+.rail-item.active {
+  background: rgba(var(--accent-rgb), 0.13);
+  border-color: var(--border-active);
+  color: var(--accent);
+}
+
+.rail-item-label { line-height: 1.35; }
+
+/* The count is the honest part of the row: how much evidence sits behind the
+   label before you click it (same argument as the skill counts, D-014). */
+.rail-n {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 1px 7px;
+}
+
+.rail-item.active .rail-n {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.16);
+}
+
+.rail-item.cap-zero,
+.rail-item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rail-count {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* The skill group keeps its disclosure (D-019): 9 more rows always open would
+   push the sticky rail past the viewport. */
+.work-rail .lens-toggle {
+  width: 100%;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px dashed var(--border-control);
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.work-rail .lens-chips {
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.rail-mobile-toggle { display: none; }
+
+/* The mode switch fills the rail width rather than floating centred. */
+.work-rail .mode-toggle { width: 100%; }
+
+/* --- Narrow: rail moves above the grid and collapses -------------------- */
+@media (max-width: 980px) {
+  .work-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .work-rail {
+    position: static;
+    padding: 0;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+  }
+
+  .rail-mobile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-control);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .rail-mobile-count {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .rail-caret { transition: transform 0.25s ease; }
+  .rail-mobile-toggle.open .rail-caret { transform: rotate(180deg); }
+
+  .rail-body {
+    display: none;
+    margin-top: 14px;
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .rail-body.open { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail-caret { transition: none; }
+}
+
+/* ============================================================
+   D-023 — NAME-FIRST HERO
+
+   The name was inside the eyebrow pill at 12.5px, same size and
+   family as the label beside it, so it read as the opening words
+   of a string rather than as a name. It was also the only place
+   the name appeared above the fold — a screenshot of the hero
+   carried the pitch and not the author.
+   ============================================================ */
+
+.hero-identity {
+  margin-bottom: 26px;
+}
+
+.hero-name {
+  font-family: var(--font-main);
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+/* A short rule under the name: gives it the weight of a masthead without
+   borrowing size from the headline, which stays dominant. */
+.hero-name::after {
+  content: '';
+  display: block;
+  width: 76px;
+  height: 2px;
+  margin: 12px auto 0;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.6);
+}
+
+.hero-role {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .hero-role { font-size: 0.72rem; letter-spacing: 0.06em; }
+  .hero-name::after { width: 60px; margin-top: 10px; }
+}
+
+/* A long section title that must not wrap into a one-word orphan. Scales with
+   the viewport instead, and only wraps when it genuinely cannot fit. */
+.section-title-wide {
+  font-size: clamp(1.35rem, 3.1vw, 2.15rem);
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .section-title-wide {
+    white-space: normal;
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Computer Vision & YOLO11 Spatial Multi-Gesture Lab Styles
+   ========================================================================== */
+
+.cv-lab-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.cv-mode-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.cv-mode-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cv-mode-btn:hover {
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--text-primary);
+  border-color: rgba(var(--accent-rgb), 0.3);
+}
+
+.cv-mode-btn.active {
+  background: rgba(var(--accent-rgb), 0.16);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.2);
+}
+
+.cv-control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.cv-slider-box {
+  flex: 1;
+  min-width: 260px;
+}
+
+.cv-clutch-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.cv-clutch-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cv-clutch-btn:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #F59E0B;
+}
+
+.cv-clutch-btn.active {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: #F59E0B;
+  color: #F59E0B;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.25);
+}
+
+.cv-clutch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.cv-clutch-btn.active .cv-clutch-dot {
+  background: #F59E0B;
+  box-shadow: 0 0 8px #F59E0B;
+}
+
+.cv-clutch-caption {
+  font-size: 0.70rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.cv-twin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.cv-canvas-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-canvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.cv-panel-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cv-panel-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+}
+
+.cv-canvas-box {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #0B0B0D;
+}
+
+.cv-sub-canvas {
+  width: 100%;
+  height: 260px;
+  display: block;
+  cursor: crosshair;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.cv-canvas-caption {
+  font-size: 0.70rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  padding-top: 2px;
+}
+
+.cv-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.cv-metric-box {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.025);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cv-metric-val {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.cv-metric-lbl {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.cv-code-accordion {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.015);
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.cv-code-summary {
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  cursor: pointer;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cv-code-summary:hover {
+  background: rgba(var(--accent-rgb), 0.08);
+}
+
+.cv-code-body {
+  padding: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.cv-code-desc {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.cv-code-snippet {
+  background: #07080A;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  overflow-x: auto;
+  color: #E2E8F0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+

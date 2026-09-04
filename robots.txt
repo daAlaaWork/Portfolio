@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# The admin dashboard is a local tool, not a page.
+Disallow: /admin.html
+
+Sitemap: https://daalaawork.github.io/Portfolio/sitemap.xml

@@ -1,0 +1,896 @@
+{
+  "n-research-center": [
+    {
+      "display": "assets/projects/n-research-center/n-research-center-01.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-01-thumb.webp",
+      "source_page": 1,
+      "source_file": "page_01_img_03.png",
+      "display_px": [
+        1600,
+        1509
+      ],
+      "bytes_before": 2010677,
+      "bytes_after": 199932
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-02.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-02-thumb.webp",
+      "source_page": 2,
+      "source_file": "page_02_img_01.png",
+      "display_px": [
+        1600,
+        1039
+      ],
+      "bytes_before": 5438731,
+      "bytes_after": 103392
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-03.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-03-thumb.webp",
+      "source_page": 2,
+      "source_file": "page_02_img_05.png",
+      "display_px": [
+        1128,
+        749
+      ],
+      "bytes_before": 317261,
+      "bytes_after": 15480
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-04.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-04-thumb.webp",
+      "source_page": 3,
+      "source_file": "page_03_img_01.png",
+      "display_px": [
+        1600,
+        1092
+      ],
+      "bytes_before": 9666499,
+      "bytes_after": 276348
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-05.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-05-thumb.webp",
+      "source_page": 3,
+      "source_file": "page_03_img_02.png",
+      "display_px": [
+        1600,
+        897
+      ],
+      "bytes_before": 1061614,
+      "bytes_after": 63542
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-06.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-06-thumb.webp",
+      "source_page": 4,
+      "source_file": "page_04_img_01.png",
+      "display_px": [
+        1600,
+        1131
+      ],
+      "bytes_before": 5415957,
+      "bytes_after": 145152
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-07.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-07-thumb.webp",
+      "source_page": 5,
+      "source_file": "page_05_img_02.png",
+      "display_px": [
+        1600,
+        525
+      ],
+      "bytes_before": 6536320,
+      "bytes_after": 82030
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-08.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-08-thumb.webp",
+      "source_page": 5,
+      "source_file": "page_05_img_01.png",
+      "display_px": [
+        1600,
+        526
+      ],
+      "bytes_before": 6449160,
+      "bytes_after": 92576
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-09.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-09-thumb.webp",
+      "source_page": 6,
+      "source_file": "page_06_img_03.png",
+      "display_px": [
+        1600,
+        523
+      ],
+      "bytes_before": 9289505,
+      "bytes_after": 110212
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-10.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-10-thumb.webp",
+      "source_page": 6,
+      "source_file": "page_06_img_01.png",
+      "display_px": [
+        1600,
+        1213
+      ],
+      "bytes_before": 4617719,
+      "bytes_after": 256186
+    },
+    {
+      "display": "assets/projects/n-research-center/n-research-center-11.webp",
+      "thumb": "assets/projects/n-research-center/n-research-center-11-thumb.webp",
+      "source_page": 6,
+      "source_file": "page_06_img_02.png",
+      "display_px": [
+        1600,
+        1208
+      ],
+      "bytes_before": 4329137,
+      "bytes_after": 260612
+    }
+  ],
+  "house-01": [
+    {
+      "display": "assets/projects/house-01/house-01-01.webp",
+      "thumb": "assets/projects/house-01/house-01-01-thumb.webp",
+      "source_page": 7,
+      "source_file": "page_07_img_03.png",
+      "display_px": [
+        1600,
+        1513
+      ],
+      "bytes_before": 4567359,
+      "bytes_after": 238034
+    },
+    {
+      "display": "assets/projects/house-01/house-01-02.webp",
+      "thumb": "assets/projects/house-01/house-01-02-thumb.webp",
+      "source_page": 8,
+      "source_file": "page_08_img_01.png",
+      "display_px": [
+        1091,
+        1600
+      ],
+      "bytes_before": 4075517,
+      "bytes_after": 349856
+    },
+    {
+      "display": "assets/projects/house-01/house-01-03.webp",
+      "thumb": "assets/projects/house-01/house-01-03-thumb.webp",
+      "source_page": 9,
+      "source_file": "page_09_img_02.png",
+      "display_px": [
+        1006,
+        1600
+      ],
+      "bytes_before": 241004,
+      "bytes_after": 79808
+    },
+    {
+      "display": "assets/projects/house-01/house-01-04.webp",
+      "thumb": "assets/projects/house-01/house-01-04-thumb.webp",
+      "source_page": 9,
+      "source_file": "page_09_img_01.png",
+      "display_px": [
+        1136,
+        1600
+      ],
+      "bytes_before": 2543825,
+      "bytes_after": 80702
+    },
+    {
+      "display": "assets/projects/house-01/house-01-05.webp",
+      "thumb": "assets/projects/house-01/house-01-05-thumb.webp",
+      "source_page": 10,
+      "source_file": "page_10_img_03.png",
+      "display_px": [
+        1600,
+        1328
+      ],
+      "bytes_before": 3172609,
+      "bytes_after": 102690
+    },
+    {
+      "display": "assets/projects/house-01/house-01-06.webp",
+      "thumb": "assets/projects/house-01/house-01-06-thumb.webp",
+      "source_page": 10,
+      "source_file": "page_10_img_01.png",
+      "display_px": [
+        1089,
+        1600
+      ],
+      "bytes_before": 369614,
+      "bytes_after": 62166
+    },
+    {
+      "display": "assets/projects/house-01/house-01-07.webp",
+      "thumb": "assets/projects/house-01/house-01-07-thumb.webp",
+      "source_page": 10,
+      "source_file": "page_10_img_02.png",
+      "display_px": [
+        1600,
+        930
+      ],
+      "bytes_before": 2802443,
+      "bytes_after": 137106
+    },
+    {
+      "display": "assets/projects/house-01/house-01-08.webp",
+      "thumb": "assets/projects/house-01/house-01-08-thumb.webp",
+      "source_page": 11,
+      "source_file": "page_11_img_01.png",
+      "display_px": [
+        1272,
+        1600
+      ],
+      "bytes_before": 4283601,
+      "bytes_after": 205122
+    },
+    {
+      "display": "assets/projects/house-01/house-01-09.webp",
+      "thumb": "assets/projects/house-01/house-01-09-thumb.webp",
+      "source_page": 13,
+      "source_file": "page_13_img_03.png",
+      "display_px": [
+        1135,
+        1600
+      ],
+      "bytes_before": 3616031,
+      "bytes_after": 126982
+    },
+    {
+      "display": "assets/projects/house-01/house-01-10.webp",
+      "thumb": "assets/projects/house-01/house-01-10-thumb.webp",
+      "source_page": 13,
+      "source_file": "page_13_img_01.png",
+      "display_px": [
+        597,
+        1600
+      ],
+      "bytes_before": 1769521,
+      "bytes_after": 87452
+    },
+    {
+      "display": "assets/projects/house-01/house-01-11.webp",
+      "thumb": "assets/projects/house-01/house-01-11-thumb.webp",
+      "source_page": 13,
+      "source_file": "page_13_img_02.png",
+      "display_px": [
+        500,
+        1600
+      ],
+      "bytes_before": 1620034,
+      "bytes_after": 77022
+    },
+    {
+      "display": "assets/projects/house-01/house-01-12.webp",
+      "thumb": "assets/projects/house-01/house-01-12-thumb.webp",
+      "source_page": 14,
+      "source_file": "page_14_img_50.png",
+      "display_px": [
+        1272,
+        1600
+      ],
+      "bytes_before": 2581606,
+      "bytes_after": 44348
+    },
+    {
+      "display": "assets/projects/house-01/house-01-13.webp",
+      "thumb": "assets/projects/house-01/house-01-13-thumb.webp",
+      "source_page": 15,
+      "source_file": "page_15_img_03.png",
+      "display_px": [
+        986,
+        1600
+      ],
+      "bytes_before": 2232633,
+      "bytes_after": 78718
+    },
+    {
+      "display": "assets/projects/house-01/house-01-14.webp",
+      "thumb": "assets/projects/house-01/house-01-14-thumb.webp",
+      "source_page": 15,
+      "source_file": "page_15_img_01.png",
+      "display_px": [
+        800,
+        1600
+      ],
+      "bytes_before": 2463104,
+      "bytes_after": 98678
+    },
+    {
+      "display": "assets/projects/house-01/house-01-15.webp",
+      "thumb": "assets/projects/house-01/house-01-15-thumb.webp",
+      "source_page": 15,
+      "source_file": "page_15_img_02.png",
+      "display_px": [
+        459,
+        1600
+      ],
+      "bytes_before": 872053,
+      "bytes_after": 29408
+    }
+  ],
+  "cairo-eye-tower": [
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-01.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-01-thumb.webp",
+      "source_page": 16,
+      "source_file": "page_16_img_03.png",
+      "display_px": [
+        1600,
+        1427
+      ],
+      "bytes_before": 3780309,
+      "bytes_after": 248856
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-02.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-02-thumb.webp",
+      "source_page": 17,
+      "source_file": "page_17_img_01.png",
+      "display_px": [
+        1495,
+        768
+      ],
+      "bytes_before": 1428135,
+      "bytes_after": 276792
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-03.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-03-thumb.webp",
+      "source_page": 18,
+      "source_file": "page_18_img_06.png",
+      "display_px": [
+        1600,
+        1516
+      ],
+      "bytes_before": 5538831,
+      "bytes_after": 124980
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-04.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-04-thumb.webp",
+      "source_page": 18,
+      "source_file": "page_18_img_01.png",
+      "display_px": [
+        580,
+        748
+      ],
+      "bytes_before": 384126,
+      "bytes_after": 32960
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-05.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-05-thumb.webp",
+      "source_page": 19,
+      "source_file": "page_19_img_01.png",
+      "display_px": [
+        1089,
+        1600
+      ],
+      "bytes_before": 9857878,
+      "bytes_after": 371724
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-06.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-06-thumb.webp",
+      "source_page": 19,
+      "source_file": "page_19_img_02.png",
+      "display_px": [
+        1091,
+        1600
+      ],
+      "bytes_before": 3873247,
+      "bytes_after": 153848
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-07.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-07-thumb.webp",
+      "source_page": 20,
+      "source_file": "page_20_img_01.png",
+      "display_px": [
+        1600,
+        1130
+      ],
+      "bytes_before": 3094131,
+      "bytes_after": 141364
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-08.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-08-thumb.webp",
+      "source_page": 21,
+      "source_file": "page_21_img_01.png",
+      "display_px": [
+        1600,
+        1145
+      ],
+      "bytes_before": 3633150,
+      "bytes_after": 187900
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-09.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-09-thumb.webp",
+      "source_page": 22,
+      "source_file": "page_22_img_01.png",
+      "display_px": [
+        1600,
+        1129
+      ],
+      "bytes_before": 2303219,
+      "bytes_after": 148708
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-10.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-10-thumb.webp",
+      "source_page": 22,
+      "source_file": "page_22_img_02.png",
+      "display_px": [
+        1170,
+        1600
+      ],
+      "bytes_before": 2650221,
+      "bytes_after": 231848
+    },
+    {
+      "display": "assets/projects/cairo-eye-tower/cairo-eye-tower-11.webp",
+      "thumb": "assets/projects/cairo-eye-tower/cairo-eye-tower-11-thumb.webp",
+      "source_page": 23,
+      "source_file": "page_23_img_01.png",
+      "display_px": [
+        1600,
+        1131
+      ],
+      "bytes_before": 5746415,
+      "bytes_after": 198486
+    }
+  ],
+  "siwa-museum": [
+    {
+      "display": "assets/projects/siwa-museum/siwa-museum-01.webp",
+      "thumb": "assets/projects/siwa-museum/siwa-museum-01-thumb.webp",
+      "source_page": 24,
+      "source_file": "page_24_img_03.png",
+      "display_px": [
+        1505,
+        1600
+      ],
+      "bytes_before": 3226371,
+      "bytes_after": 211888
+    },
+    {
+      "display": "assets/projects/siwa-museum/siwa-museum-02.webp",
+      "thumb": "assets/projects/siwa-museum/siwa-museum-02-thumb.webp",
+      "source_page": 25,
+      "source_file": "page_25_img_05.png",
+      "display_px": [
+        1600,
+        1600
+      ],
+      "bytes_before": 3465847,
+      "bytes_after": 200326
+    },
+    {
+      "display": "assets/projects/siwa-museum/siwa-museum-03.webp",
+      "thumb": "assets/projects/siwa-museum/siwa-museum-03-thumb.webp",
+      "source_page": 25,
+      "source_file": "page_25_img_02.png",
+      "display_px": [
+        1113,
+        627
+      ],
+      "bytes_before": 244859,
+      "bytes_after": 15264
+    },
+    {
+      "display": "assets/projects/siwa-museum/siwa-museum-04.webp",
+      "thumb": "assets/projects/siwa-museum/siwa-museum-04-thumb.webp",
+      "source_page": 26,
+      "source_file": "page_26_img_01.png",
+      "display_px": [
+        1600,
+        1131
+      ],
+      "bytes_before": 15667211,
+      "bytes_after": 205810
+    },
+    {
+      "display": "assets/projects/siwa-museum/siwa-museum-05.webp",
+      "thumb": "assets/projects/siwa-museum/siwa-museum-05-thumb.webp",
+      "source_page": 27,
+      "source_file": "page_27_img_01.png",
+      "display_px": [
+        1600,
+        1131
+      ],
+      "bytes_before": 18165078,
+      "bytes_after": 189130
+    }
+  ],
+  "ml-in-grasshopper": [
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-01.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-01-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_12.png",
+      "display_px": [
+        1600,
+        689
+      ],
+      "bytes_before": 396941,
+      "bytes_after": 50432
+    },
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-02.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-02-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_02.png",
+      "display_px": [
+        1399,
+        681
+      ],
+      "bytes_before": 1069325,
+      "bytes_after": 72540
+    },
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-03.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-03-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_03.png",
+      "display_px": [
+        1399,
+        681
+      ],
+      "bytes_before": 1211575,
+      "bytes_after": 66790
+    },
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-04.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-04-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_07.png",
+      "display_px": [
+        1399,
+        681
+      ],
+      "bytes_before": 573728,
+      "bytes_after": 27502
+    },
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-05.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-05-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_08.png",
+      "display_px": [
+        1399,
+        681
+      ],
+      "bytes_before": 443744,
+      "bytes_after": 13848
+    },
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-06.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-06-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_04.png",
+      "display_px": [
+        1396,
+        681
+      ],
+      "bytes_before": 1143780,
+      "bytes_after": 40992
+    },
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-07.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-07-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_09.png",
+      "display_px": [
+        1396,
+        681
+      ],
+      "bytes_before": 455355,
+      "bytes_after": 15282
+    },
+    {
+      "display": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-08.webp",
+      "thumb": "assets/projects/ml-in-grasshopper/ml-in-grasshopper-08-thumb.webp",
+      "source_page": 29,
+      "source_file": "page_29_img_11.png",
+      "display_px": [
+        1396,
+        681
+      ],
+      "bytes_before": 439556,
+      "bytes_after": 15132
+    }
+  ],
+  "bim-to-ue": [
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-01.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-01-thumb.webp",
+      "source_page": 30,
+      "source_file": "page_30_img_03.png",
+      "display_px": [
+        1151,
+        1086
+      ],
+      "bytes_before": 379685,
+      "bytes_after": 25828
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-02.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-02-thumb.webp",
+      "source_page": 31,
+      "source_file": "page_31_img_03.png",
+      "display_px": [
+        1424,
+        1600
+      ],
+      "bytes_before": 6288012,
+      "bytes_after": 256508
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-03.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-03-thumb.webp",
+      "source_page": 31,
+      "source_file": "page_31_img_04.png",
+      "display_px": [
+        1600,
+        1315
+      ],
+      "bytes_before": 874409,
+      "bytes_after": 142344
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-04.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-04-thumb.webp",
+      "source_page": 32,
+      "source_file": "page_32_img_04.png",
+      "display_px": [
+        1600,
+        869
+      ],
+      "bytes_before": 3117066,
+      "bytes_after": 245624
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-05.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-05-thumb.webp",
+      "source_page": 32,
+      "source_file": "page_32_img_05.png",
+      "display_px": [
+        1600,
+        868
+      ],
+      "bytes_before": 3167181,
+      "bytes_after": 208642
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-06.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-06-thumb.webp",
+      "source_page": 32,
+      "source_file": "page_32_img_06.png",
+      "display_px": [
+        1072,
+        583
+      ],
+      "bytes_before": 554467,
+      "bytes_after": 38354
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-07.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-07-thumb.webp",
+      "source_page": 32,
+      "source_file": "page_32_img_08.png",
+      "display_px": [
+        1073,
+        581
+      ],
+      "bytes_before": 645124,
+      "bytes_after": 44198
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-08.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-08-thumb.webp",
+      "source_page": 32,
+      "source_file": "page_32_img_07.png",
+      "display_px": [
+        1072,
+        573
+      ],
+      "bytes_before": 1358400,
+      "bytes_after": 157324
+    },
+    {
+      "display": "assets/projects/bim-to-ue/bim-to-ue-09.webp",
+      "thumb": "assets/projects/bim-to-ue/bim-to-ue-09-thumb.webp",
+      "source_page": 32,
+      "source_file": "page_32_img_09.png",
+      "display_px": [
+        1072,
+        573
+      ],
+      "bytes_before": 1231061,
+      "bytes_after": 166524
+    }
+  ],
+  "generative-surface": [
+    {
+      "display": "assets/projects/generative-surface/generative-surface-01.webp",
+      "thumb": "assets/projects/generative-surface/generative-surface-01-thumb.webp",
+      "source_page": 33,
+      "source_file": "page_33_img_04.png",
+      "display_px": [
+        1600,
+        721
+      ],
+      "bytes_before": 432910,
+      "bytes_after": 51470
+    },
+    {
+      "display": "assets/projects/generative-surface/generative-surface-02.webp",
+      "thumb": "assets/projects/generative-surface/generative-surface-02-thumb.webp",
+      "source_page": 33,
+      "source_file": "page_33_img_05.png",
+      "display_px": [
+        1600,
+        679
+      ],
+      "bytes_before": 1492535,
+      "bytes_after": 63414
+    },
+    {
+      "display": "assets/projects/generative-surface/generative-surface-03.webp",
+      "thumb": "assets/projects/generative-surface/generative-surface-03-thumb.webp",
+      "source_page": 33,
+      "source_file": "page_33_img_03.png",
+      "display_px": [
+        1488,
+        1080
+      ],
+      "bytes_before": 333105,
+      "bytes_after": 61210
+    }
+  ],
+  "dancing-shell": [
+    {
+      "display": "assets/projects/dancing-shell/dancing-shell-01.webp",
+      "thumb": "assets/projects/dancing-shell/dancing-shell-01-thumb.webp",
+      "source_page": 34,
+      "source_file": "page_34_img_13.png",
+      "display_px": [
+        1600,
+        858
+      ],
+      "bytes_before": 487622,
+      "bytes_after": 58090
+    },
+    {
+      "display": "assets/projects/dancing-shell/dancing-shell-02.webp",
+      "thumb": "assets/projects/dancing-shell/dancing-shell-02-thumb.webp",
+      "source_page": 34,
+      "source_file": "page_34_img_03.png",
+      "display_px": [
+        1545,
+        1080
+      ],
+      "bytes_before": 1578297,
+      "bytes_after": 148240
+    }
+  ],
+  "annex-villa": [
+    {
+      "display": "assets/projects/annex-villa/annex-villa-01.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-01-thumb.webp",
+      "source_page": 35,
+      "source_file": "page_35_img_03.png",
+      "display_px": [
+        1400,
+        1324
+      ],
+      "bytes_before": 2499818,
+      "bytes_after": 262580
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-02.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-02-thumb.webp",
+      "source_page": 36,
+      "source_file": "page_36_img_01.png",
+      "display_px": [
+        1589,
+        1600
+      ],
+      "bytes_before": 1090326,
+      "bytes_after": 520906
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-03.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-03-thumb.webp",
+      "source_page": 36,
+      "source_file": "page_36_img_04.png",
+      "display_px": [
+        1600,
+        1426
+      ],
+      "bytes_before": 3887811,
+      "bytes_after": 339796
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-04.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-04-thumb.webp",
+      "source_page": 36,
+      "source_file": "page_36_img_03.png",
+      "display_px": [
+        1600,
+        777
+      ],
+      "bytes_before": 467499,
+      "bytes_after": 102676
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-05.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-05-thumb.webp",
+      "source_page": 36,
+      "source_file": "page_36_img_02.png",
+      "display_px": [
+        1600,
+        777
+      ],
+      "bytes_before": 2587063,
+      "bytes_after": 186740
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-06.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-06-thumb.webp",
+      "source_page": 37,
+      "source_file": "page_37_img_05.png",
+      "display_px": [
+        993,
+        1600
+      ],
+      "bytes_before": 357250,
+      "bytes_after": 57704
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-07.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-07-thumb.webp",
+      "source_page": 37,
+      "source_file": "page_37_img_02.png",
+      "display_px": [
+        1136,
+        1002
+      ],
+      "bytes_before": 1979167,
+      "bytes_after": 256188
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-08.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-08-thumb.webp",
+      "source_page": 37,
+      "source_file": "page_37_img_01.png",
+      "display_px": [
+        781,
+        1157
+      ],
+      "bytes_before": 990975,
+      "bytes_after": 64634
+    },
+    {
+      "display": "assets/projects/annex-villa/annex-villa-09.webp",
+      "thumb": "assets/projects/annex-villa/annex-villa-09-thumb.webp",
+      "source_page": 37,
+      "source_file": "page_37_img_04.png",
+      "display_px": [
+        767,
+        1162
+      ],
+      "bytes_before": 1214925,
+      "bytes_after": 115086
+    }
+  ]
+}

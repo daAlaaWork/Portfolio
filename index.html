@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dev">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Design Intent to a System That Runs — Alaa Mahmoud</title>
+
+  <!-- This site's job is to be pasted into a proposal, a LinkedIn comment or a
+       studio conversation. Without these it unfurls as a bare URL. -->
+  <meta name="description" content="Concept, geometry, pipeline, engine, delivery — the stages usually split across four hires and three handovers. I hold the whole line, with the architecture degree that says which part matters.">
+  <link rel="canonical" href="https://daalaawork.github.io/Portfolio/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arch. Alaa Mahmoud">
+  <meta property="og:title" content="From Design Intent to a System That Runs — Alaa Mahmoud">
+  <meta property="og:description" content="Concept, geometry, pipeline, engine, delivery. I hold the whole line — real-time engines, generative pipelines, artist tooling — with the architecture degree that says which part matters.">
+  <meta property="og:image" content="https://daalaawork.github.io/Portfolio/assets/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alaa Mahmoud — architecture and systems, from design intent to a system that runs">
+  <meta property="og:url" content="https://daalaawork.github.io/Portfolio/">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="From Design Intent to a System That Runs — Alaa Mahmoud">
+  <meta name="twitter:description" content="Concept, geometry, pipeline, engine, delivery. I hold the whole line — real-time engines, generative pipelines, artist tooling — with the architecture degree that says which part matters.">
+  <meta name="twitter:image" content="https://daalaawork.github.io/Portfolio/assets/og-cover.jpg">
+
+  <meta name="theme-color" content="#0b0b0d">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="icon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  
+  <!-- Google Fonts: Poppins & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Styling -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- 🌐 Global Fixed Full-Site Solid Dot Matrix Canvas -->
+  <canvas id="globalCanvas"></canvas>
+
+  <!-- 🌟 Floating Fixed Bottom-Right Contact Me CTA Button -->
+  <a href="#contact" class="floating-contact-btn" aria-label="Direct contact options for Arch. Alaa Mahmoud">
+    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+    <span>CONTACT ME</span>
+  </a>
+
+  <!-- 🌟 Architectural Ruler Gauge Progress Tracker Sidebar -->
+  <nav class="sidebar-tracker" aria-label="Section gauge navigation">
+    <div class="ruler-gauge-wrap">
+      <div class="ruler-axis">
+        <div class="ruler-slider-indicator" id="rulerIndicator"></div>
+      </div>
+      <div class="ruler-ticks-list" role="tablist">
+        <a href="#hero" class="ruler-tick active" data-section="hero" role="tab" aria-selected="true" aria-label="Jump to Home section">
+          <span class="tick-mark"></span>
+          <span class="tick-num">01</span>
+          <span class="ruler-tooltip">01 // HOME</span>
+        </a>
+        <a href="#projects" class="ruler-tick" data-section="projects" role="tab" aria-selected="false" aria-label="Jump to Work section">
+          <span class="tick-mark"></span>
+          <span class="tick-num">02</span>
+          <span class="ruler-tooltip">02 // WORK</span>
+        </a>
+        <a href="#about-me" class="ruler-tick" data-section="about-me" role="tab" aria-selected="false" aria-label="Jump to About Me section">
+          <span class="tick-mark"></span>
+          <span class="tick-num">03</span>
+          <span class="ruler-tooltip">03 // ABOUT ME</span>
+        </a>
+        <a href="#twin" class="ruler-tick" data-section="twin" role="tab" aria-selected="false" aria-label="Jump to prepared answers section">
+          <span class="tick-mark"></span>
+          <span class="tick-num">04</span>
+          <span class="ruler-tooltip">04 // BRIEFING</span>
+        </a>
+        <a href="#engage" class="ruler-tick" data-section="engage" role="tab" aria-selected="false" aria-label="Jump to How to work with me section">
+          <span class="tick-mark"></span>
+          <span class="tick-num">05</span>
+          <span class="ruler-tooltip">05 // ENGAGE</span>
+        </a>
+        <a href="#contact" class="ruler-tick" data-section="contact" role="tab" aria-selected="false" aria-label="Jump to Contact section">
+          <span class="tick-mark"></span>
+          <span class="tick-num">06</span>
+          <span class="ruler-tooltip">06 // CONTACT</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 🌟 Top Centered Floating Control Bar -->
+  <header class="top-control-bar">
+
+    <!-- Dynamic Fade-In / Fade-Out Section Label -->
+    <div class="scroll-section-label" id="scrollSectionLabel" aria-live="polite">
+      <span id="scrollSectionNum">01</span> // <span id="scrollSectionName">HOME</span>
+    </div>
+  </header>
+
+  <!-- Minimalist Typography Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-typography-container">
+      <div class="hero-identity">
+        <p class="hero-name">Alaa Mahmoud</p>
+        <p class="hero-role">Architecture&nbsp;+&nbsp;Systems</p>
+      </div>
+      <h1 class="hero-heading" id="heroTitle">
+        From Design Intent<br>
+        <span class="highlight-text">To a System That Runs.</span>
+      </h1>
+      <p class="hero-subtext" id="heroDescription">
+        Concept, geometry, pipeline, engine, delivery &mdash; the stages usually split across four hires and three handovers, each one losing something on the way. I hold the whole line: real-time engines, generative pipelines, the tooling teams work inside, and the apps it ships on. A degree in architecture behind it, so the intent survives the build.
+      </p>
+
+      <!-- What he actually does, in three moves. No numbers here that were
+           not measured — see CLAUDE.md working rule 3. -->
+      <ul class="hero-capabilities">
+        <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> BIM · Grasshopper · Unreal · AI pipelines</li>
+        <li><i class="fa-solid fa-code" aria-hidden="true"></i> Blueprints · Python · C++</li>
+        <li><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i> Architecture degree — knows what must survive the crossing</li>
+      </ul>
+
+      <div class="hero-actions">
+        <a href="#projects" class="hero-btn primary-btn">
+          SEE THE WORK <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+        </a>
+        <a href="#engage" class="hero-btn line-btn">
+          HOW TO WORK WITH ME <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Project Showcase Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-subtitle">THE WORK</span>
+        <h2 class="section-title">Concept, Design, Production, Delivery</h2>
+        <p class="section-lede">
+          Engines, editor tools, procedural pipelines, AI workflows, computational design
+          research and the built architecture underneath it. <strong>Vision</strong> is the
+          work you look at; <strong>Systems</strong> is the work that makes it run. Pick a
+          side, then narrow by discipline.
+        </p>
+      </div>
+
+      <!-- The stage carries the selected project and spans the full width.
+           It used to sit beside the rail, which squeezed both (D-022). -->
+      <div class="stage-container">
+        <div class="stage-screen">
+          <div class="stage-image" id="stageMedia"></div>
+          <div class="stage-overlay-content">
+            <span class="stage-badge-tag" id="stageBadge">REAL-TIME ENGINE</span>
+            <h3 class="stage-project-title" id="stageTitle">ZSync — Interactive Parallax Property Engine</h3>
+            <p class="stage-project-desc" id="stageDesc"></p>
+            <div class="stage-tech-list" id="stageTech"></div>
+            <button class="open-soul-btn" onclick="openCurrentProjectSoul()">
+              OPEN CASE <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters live in a rail beside the work, not stacked on top of it
+           (D-021). Three levels, labelled and sharing a left edge, so the
+           nesting is visible: body of work → discipline → skill. Counts are
+           generated from live data, never written into the markup. -->
+      <div class="work-layout">
+        <aside class="work-rail" aria-label="Project filters">
+          <button class="rail-mobile-toggle" id="railMobileToggle" onclick="toggleRail()" aria-expanded="false" aria-controls="railBody">
+            <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+            <span>Filters</span>
+            <span class="rail-mobile-count" id="railMobileCount"></span>
+            <i class="fa-solid fa-chevron-down rail-caret" aria-hidden="true"></i>
+          </button>
+
+          <div class="rail-body" id="railBody">
+            <div class="rail-group">
+              <span class="rail-label">Body of work</span>
+              <div class="mode-toggle" role="tablist" aria-label="Body of work">
+                <button class="mode-btn" id="btnModeArt" onclick="setMode('art')" role="tab" aria-selected="false">
+                  <i class="fa-solid fa-palette" aria-hidden="true"></i> VISION
+                </button>
+                <button class="mode-btn active" id="btnModeDev" onclick="setMode('dev')" role="tab" aria-selected="true">
+                  <i class="fa-solid fa-code" aria-hidden="true"></i> SYSTEMS
+                </button>
+              </div>
+            </div>
+
+            <div class="rail-group">
+              <span class="rail-label">Discipline</span>
+              <div class="rail-list" id="filterPills" role="tablist" aria-label="Project category filters"></div>
+            </div>
+
+            <div class="rail-group">
+              <span class="rail-label">Skill</span>
+              <div class="rail-list" id="capabilityLens" aria-label="Filter projects by capability"></div>
+            </div>
+
+            <p class="rail-count" id="railCount"></p>
+          </div>
+        </aside>
+
+        <div class="work-main">
+          <!-- Responsive Projects Grid -->
+          <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Digital Twin Terminal Shell Section -->
+  <!-- About Me / Technical Bio Section -->
+  <section class="bio-section" id="about-me">
+    <div class="container">
+      <div class="bio-card">
+        <div class="bio-grid">
+          <div class="bio-text">
+            <span class="section-subtitle">BIOGRAPHY & CORE COMPETENCIES</span>
+            <h2 class="section-title">Standing on Both Banks</h2>
+            <p class="bio-lead">
+              Licensed architect turned Unreal Engine developer. Architectural practice
+              since 2019, real-time engine work since 2021 — which means the person
+              writing the tool has also drawn the set it has to survive.
+            </p>
+            <p class="bio-body">
+              The work is consistently the same shape: a design exists as intent, and
+              somebody has to make it actually run — as geometry, as a pipeline, as
+              something a client can walk through. That means generating what does not
+              exist yet, connecting the things that were never built to talk, and
+              building the tooling a team then works inside. Doing it without breaking
+              the design takes knowing both sides, which is why the architecture half
+              is not background.
+            </p>
+            <div class="bio-pillars">
+              <div class="pillar">
+                <i class="fa-solid fa-cubes-stacked" aria-hidden="true"></i>
+                <div>
+                  <h4>Unreal Engine 5 C++ Infrastructure</h4>
+                  <p>Custom Editor Utility Tools, JSON world hierarchies, shader compilation, profiling.</p>
+                </div>
+              </div>
+              <div class="pillar">
+                <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                <div>
+                  <h4>Parametric & AI Governance</h4>
+                  <p>Rhino Grasshopper HOPS solvers, Pydantic AST verification, ComfyUI concept acceleration.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bio-contact-box">
+            <h3>DIRECT CONTACT & SPECS</h3>
+            <p>Based in Cairo, Egypt • Operating Globally Remote</p>
+            <div class="quick-contact-list">
+              <div class="qc-item">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <span>archalaamahmoud@gmail.com</span>
+              </div>
+              <div class="qc-item">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <span>+20 109 748 3857</span>
+              </div>
+              <div class="qc-item">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                <span>linkedin.com/in/alaamahmoud95</span>
+              </div>
+              <div class="qc-item">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span>Cairo, Egypt • Global Remote</span>
+              </div>
+            </div>
+            <a href="#contact" class="btn-full-contact">INITIATE INQUIRY</a>
+          </div>
+        </div>
+
+        <!-- Capability matrix. Turns "23 projects" into "N capabilities, each
+             evidenced N times" — the range is the argument, and the counts keep
+             it honest. Generated by app.js renderCapabilityMatrix(); each row
+             jumps to the work grid with that lens applied. -->
+        <div class="cap-matrix-wrap">
+          <span class="section-subtitle">ONE STACK, ACROSS THE WORK</span>
+          <p class="cap-matrix-lede">
+            The projects below are filed by discipline, but they are built out of the
+            same <span id="capCount">few</span> capabilities. Each row is how many pieces
+            of work in the showcase actually evidence it — click one to see them.
+          </p>
+          <div class="cap-matrix" id="capabilityMatrix"></div>
+        </div>
+
+        <!-- What he has actually owned. This is scope of responsibility in his
+             own words — deliberately NOT a title, because he has not held one
+             (D-017, and CLAUDE.md rule 3: an R&D lead is exactly the hire that
+             gets reference-checked). -->
+        <div class="owned-wrap">
+          <span class="section-subtitle">BEYOND WRITING THE CODE</span>
+          <p class="owned-lede">
+            Across seven years the pattern has been the same: I end up being the one
+            who decides how a thing gets built, not only the one who builds it.
+          </p>
+          <ul class="owned-list">
+            <li>
+              <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
+              <div><h4>Set the technical approach</h4>
+              <p>Chose how a project would be built rather than implementing someone else&rsquo;s decision.</p></div>
+            </li>
+            <li>
+              <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
+              <div><h4>Chose the pipeline others worked inside</h4>
+              <p>Tooling and workflow decisions that then constrained and enabled every artist and developer on the project.</p></div>
+            </li>
+            <li>
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              <div><h4>Onboarded, directed and unblocked people</h4>
+              <p>Advised and mentored <strong>15 students across 3 graduation project teams</strong> at Egypt&rsquo;s <a href="https://iti.gov.eg/home" target="_blank" rel="noopener noreferrer" class="track-link">Information Technology Institute</a> in 2025, building in Unreal Engine &mdash; reviewing work I did not build and directing how it should be approached.</p></div>
+            </li>
+            <li>
+              <i class="fa-solid fa-ruler-combined" aria-hidden="true"></i>
+              <div><h4>Scoped and estimated the work</h4>
+              <p>Said what was feasible, what it would cost in time, and what would have to be traded away.</p></div>
+            </li>
+            <li>
+              <i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>
+              <div><h4>Carried projects end to end</h4>
+              <p>From brief to something running, rather than owning one stage of a relay.</p></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Experience timeline. Roles only — no client projects, no client
+             media. The Vancore row states the systems scope explicitly so the
+             studio's visual work is never read as his (CLAUDE.md rules 3 + 4). -->
+        <div class="track-wrap">
+          <span class="section-subtitle">WHERE THIS HAS RUN</span>
+          <p class="track-lede">
+            Seven years across architectural practice and real-time engine teams. The
+            role is consistently the same one: the person who makes design intent
+            survive the engine.
+          </p>
+          <ol class="track-list">
+            <li class="track-row track-current">
+              <div class="track-when"><span class="track-dates">NOV 2025 — PRESENT</span><span class="track-tag">CURRENT</span></div>
+              <div class="track-what">
+                <h4>Unreal Engine Developer <span class="track-org">· Vancore Studios</span></h4>
+                <p>An in-house Blueprint archviz system that the studio's interactive
+                real-estate presentations are built on, plus the testing and automation
+                tooling around it, and a Node.js middleware server linking a presentation
+                to the CRM. UI and widget performance work.</p>
+              </div>
+            </li>
+            <li class="track-row">
+              <div class="track-when"><span class="track-dates">JAN 2025 — NOV 2025</span></div>
+              <div class="track-what">
+                <h4>UE Developer &amp; Technical Artist <span class="track-org">· Cube Consultants</span></h4>
+                <p>Gamified real-time sales applications; UE editor tools for environment
+                composition and lighting; local ComfyUI workflows in the concept cycle.</p>
+              </div>
+            </li>
+            <li class="track-row">
+              <div class="track-when"><span class="track-dates">2025</span><span class="track-tag">ADVISORY</span></div>
+              <div class="track-what">
+                <h4>Graduation Project Advisor &amp; Mentor <span class="track-org">· <a href="https://iti.gov.eg/home" target="_blank" rel="noopener noreferrer" class="track-link">Information Technology Institute (ITI)</a></span></h4>
+                <p>Advised and mentored 15 students across 3 graduation project teams
+                building in Unreal Engine &mdash; technical direction, review, and
+                unblocking each team on work I did not build myself.</p>
+              </div>
+            </li>
+            <li class="track-row">
+              <div class="track-when"><span class="track-dates">AUG 2024 — DEC 2024</span></div>
+              <div class="track-what">
+                <h4>UE Developer &amp; Technical Artist <span class="track-org">· Creative Motions</span></h4>
+                <p>Real-time visualization assets and shader setups.</p>
+              </div>
+            </li>
+            <li class="track-row">
+              <div class="track-when"><span class="track-dates">AUG 2022 — SEP 2022</span></div>
+              <div class="track-what">
+                <h4>UE Technical Artist <span class="track-org">· CitiesOS</span></h4>
+                <p>Urban digital-twin assets and real-time spatial data integration pipelines.</p>
+              </div>
+            </li>
+            <li class="track-row">
+              <div class="track-when"><span class="track-dates">JAN 2021 — JUL 2022</span></div>
+              <div class="track-what">
+                <h4>Architect &amp; UE Technical Artist <span class="track-org">· Techno Vision</span></h4>
+                <p>Real-time architectural environments and computational automation tools.</p>
+              </div>
+            </li>
+            <li class="track-row">
+              <div class="track-when"><span class="track-dates">2019 — PRESENT</span></div>
+              <div class="track-what">
+                <h4>Parametric &amp; Interior Design, UE <span class="track-org">· Freelance</span></h4>
+                <p>Parametric interiors, CNC/ArtCAM fabrication geometry, real-time client presentations.</p>
+              </div>
+            </li>
+            <li class="track-row">
+              <div class="track-when"><span class="track-dates">JAN 2019 — JUL 2020</span></div>
+              <div class="track-what">
+                <h4>Interior Designer <span class="track-org">· Abdulelah Al-Mohanna Architects</span></h4>
+                <p>Interior spatial layouts, material specifications, 3ds Max/CAD presentation sets.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="twin">
+    <div class="container">
+      <div class="twin-wrapper">
+        <div class="twin-intro">
+          <span class="section-subtitle">BEFORE YOU EMAIL</span>
+          <h2 class="section-title">The Questions Everyone Asks</h2>
+          <p>
+            Prepared answers to the four questions that open most conversations — who I am, where I have worked, what I have led, and what I am available for.
+            <strong>These are written, not generated</strong> — there is no model behind
+            this panel, and anything outside the set is better asked directly.
+          </p>
+          <div class="prompt-chips">
+            <button class="chip-btn" onclick="askTwin('Who are you?')">
+              <i class="fa-solid fa-angle-right" aria-hidden="true"></i> "Who are you?"
+            </button>
+            <button class="chip-btn" onclick="askTwin('Where have you worked?')">
+              <i class="fa-solid fa-angle-right" aria-hidden="true"></i> "Where have you worked?"
+            </button>
+            <button class="chip-btn" onclick="askTwin('Have you led or taught anyone?')">
+              <i class="fa-solid fa-angle-right" aria-hidden="true"></i> "Have you led or taught anyone?"
+            </button>
+            <button class="chip-btn" onclick="askTwin('What are you available for?')">
+              <i class="fa-solid fa-angle-right" aria-hidden="true"></i> "What are you available for?"
+            </button>
+          </div>
+        </div>
+
+        <div class="twin-terminal-shell">
+          <div class="terminal-header">
+            <span class="term-dot red"></span>
+            <span class="term-dot yellow"></span>
+            <span class="term-dot green"></span>
+            <span class="term-title">PREPARED ANSWERS — WRITTEN BY ALAA, NOT GENERATED</span>
+          </div>
+          <div class="twin-chat-container" id="twinChatBody" role="log" aria-live="polite">
+            <div class="chat-row ai-row">
+              <span class="chat-author">ALAA — WRITTEN ANSWER</span>
+              <p class="chat-text">Pick a question on the left, or type one — keyword matching will find the closest written answer, and tell you plainly when there isn't one.</p>
+            </div>
+          </div>
+          <form class="twin-input-wrap" id="twinInputForm" onsubmit="handleCustomTwinQuery(event)">
+            <input type="text" class="twin-text-input" id="twinQueryInput" placeholder="Type a question…" aria-label="Type a question to match against the written answers">
+            <button type="submit" class="twin-send-btn">
+              <span>MATCH</span> <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to work with me — the three engagement shapes (D-017). One
+       identity, three doors. Deliberately no pricing: the funnel stays open
+       until there is rate data honest enough to publish. -->
+  <section class="section engage-section" id="engage">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-subtitle">HOW TO WORK WITH ME</span>
+        <h2 class="section-title section-title-wide">Advise It, Lead It, or Hire Me to Run It</h2>
+        <p class="section-lede">
+          Same person, three sizes. Most work starts at the smallest one that answers
+          the question you actually have.
+        </p>
+      </div>
+
+      <div class="engage-grid">
+        <article class="engage-card">
+          <span class="engage-step">01</span>
+          <h3>Technical Review</h3>
+          <p class="engage-for">
+            <em>&ldquo;Our pipeline is slow, this will not hit frame rate, or we cannot
+            evaluate a decision in front of us.&rdquo;</em>
+          </p>
+          <p>
+            A short look at what you have, and a written answer: what is actually
+            costing you, what I would change first, and what I would leave alone.
+            Fixed scope, no commitment past it.
+          </p>
+          <a href="#contact" class="engage-cta">Start here <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="engage-card engage-card-lead">
+          <span class="engage-step">02</span>
+          <h3>Fractional Technical Lead</h3>
+          <p class="engage-for">
+            <em>&ldquo;We have a real-time project and nobody senior enough to own
+            it.&rdquo;</em>
+          </p>
+          <p>
+            I set the technical approach, build the core of it, and direct whoever
+            else touches the pipeline. The role I have effectively been doing
+            in-house &mdash; deciding how it gets built, not only building it.
+          </p>
+          <a href="#contact" class="engage-cta">Talk it through <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="engage-card">
+          <span class="engage-step">03</span>
+          <h3>R&amp;D / Technical Direction</h3>
+          <p class="engage-for">
+            <em>&ldquo;We are hiring someone to run the real-time side.&rdquo;</em>
+          </p>
+          <p>
+            Full-time or long-term, for a studio or a startup building something
+            where the 3D and the engineering cannot be handed between two
+            departments. Currently at Vancore Studios; open to the right role.
+          </p>
+          <a href="#contact" class="engage-cta">Get in touch <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Direct Inquiry Section -->
+  <section class="section" id="contact">
+    <div class="container contact-container">
+      <div class="contact-header">
+        <span class="section-subtitle">GET IN TOUCH</span>
+        <h2 class="section-title">Initiate Collaboration</h2>
+        <p>Open to technical reviews, fractional technical direction, and full-time R&amp;D
+        or technical-lead roles. The fastest way in is a short message describing what is
+        stuck — I will tell you plainly whether it is something I can help with.</p>
+      </div>
+
+      <div class="contact-action-cards">
+        <a href="mailto:archalaamahmoud@gmail.com" class="action-card highlight-card">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <h3>EMAIL DIRECTLY</h3>
+          <span class="card-val">archalaamahmoud@gmail.com</span>
+          <span class="card-hint">Primary channel for technical proposals</span>
+        </a>
+
+        <a href="https://wa.me/201097483857" target="_blank" rel="noopener noreferrer" class="action-card">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <h3>WHATSAPP / PHONE</h3>
+          <span class="card-val">+20 109 748 3857</span>
+          <span class="card-hint">Fastest response for urgent studio consulting</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/alaamahmoud95" target="_blank" rel="noopener noreferrer" class="action-card">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <h3>LINKEDIN PROFILE</h3>
+          <span class="card-val">alaamahmoud95</span>
+          <span class="card-hint">Professional network & recommendations</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof Modal Drawer -->
+  <div class="modal-overlay" id="proofModal" onclick="closeProofModal(event)" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeProofModal()" aria-label="Close modal window">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Full-bleed image & video viewer, sits above the case modal -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Enlarged project media">
+    <button class="lightbox-close" id="lightboxClose" onclick="closeLightbox()" aria-label="Close media viewer">&times;</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" onclick="stepLightbox(-1)" aria-label="Previous media">
+      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    
+    <div class="lightbox-media-container" id="lightboxMediaContainer">
+      <!-- src is set on open; the 1x1 placeholder avoids an empty-src request -->
+      <img id="lightboxImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <video id="lightboxVideo" controls playsinline preload="metadata" style="display:none;"></video>
+    </div>
+
+    <button class="lightbox-nav next" id="lightboxNext" onclick="stepLightbox(1)" aria-label="Next media">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <div class="lightbox-footer-info">
+      <span class="lightbox-caption" id="lightboxCaption"></span>
+      <span class="lightbox-count" id="lightboxCount"></span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Arch. Alaa Mahmoud.</div>
+      <div>Cairo, Egypt — working globally remote.</div>
+    </div>
+  </footer>
+
+  <!-- Data, then application logic -->
+  <script src="data/projects.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
