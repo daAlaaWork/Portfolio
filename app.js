@@ -915,6 +915,177 @@ const plateArt = {
     g.strokeRect(cx - 15, cy - 50, 160, 100);
     g.fillText('Stable Diffusion', cx, cy + 5);
     g.fillText('Architectural Prompt Engine', cx - 110, cy + 85);
+  },
+
+  /* 14–17. The four public-repository projects. None of them ship footage or a
+     demo panel, so the generated plate is the only image the card ever has —
+     it has to carry the idea on its own. Each one draws the actual shape of the
+     experiment, not a logo. */
+
+  // 14. Concrete Compressive Strength — predicted against measured
+  'concrete-strength'(g, a) {
+    /* `.card-thumb` is a fixed 150–168 px box with `background-size: cover`, so
+       an 800×450 plate is cropped top and bottom — hardest on a one-column
+       card, where only roughly y 110–340 survives. Every plate below is drawn
+       inside that band. */
+    const x0 = 250, y0 = 330, s = 168;
+    g.strokeStyle = `rgba(${a}, 0.55)`;
+    g.lineWidth = 1.5;
+    g.beginPath();
+    g.moveTo(x0, y0 - s); g.lineTo(x0, y0); g.lineTo(x0 + s, y0);
+    g.stroke();
+
+    // Perfect-prediction diagonal
+    g.strokeStyle = `rgba(${a}, 0.32)`;
+    g.setLineDash([5, 5]);
+    g.beginPath(); g.moveTo(x0, y0); g.lineTo(x0 + s, y0 - s); g.stroke();
+    g.setLineDash([]);
+
+    // Scatter hugging the diagonal — R² 0.918 looks like this, not like a line
+    g.fillStyle = `rgba(${a}, 0.72)`;
+    for (let i = 0; i < 46; i++) {
+      const t = (i * 37 % 100) / 100;
+      const spread = ((i * 53 % 21) - 10) / 100;
+      const px = x0 + t * s;
+      const py = y0 - (t + spread * 0.5) * s;
+      g.beginPath(); g.arc(px, py, 2.6, 0, Math.PI * 2); g.fill();
+    }
+
+    g.fillStyle = 'rgba(255,255,255,0.62)';
+    g.font = '12px "JetBrains Mono", monospace';
+    // Beside the axis end rather than under it — under it is outside the crop.
+    g.fillText('measured strength (MPa)', x0 + s + 12, y0 + 4);
+    g.save();
+    g.translate(x0 - 14, y0 - s / 2 + 60);
+    g.rotate(-Math.PI / 2);
+    g.fillText('predicted', 0, 0);
+    g.restore();
+    g.fillStyle = `rgb(${a})`;
+    g.fillText('XGBoost · degree 2 · R² 0.918', x0 - 4, y0 - s - 16);
+  },
+
+  // 15. Heart Failure — three objectives selecting three different models
+  'heart-failure'(g, a) {
+    const rows = [
+      ['accuracy', 0.62, false],
+      ['f1_macro', 0.78, false],
+      ['recall_macro', 0.92, true]
+    ];
+    const x0 = 210, w = 340, h = 40;
+    g.font = '13px "JetBrains Mono", monospace';
+    rows.forEach(([label, v, picked], i) => {
+      const y = 150 + i * 62;
+      g.strokeStyle = `rgba(${a}, 0.28)`;
+      g.lineWidth = 1;
+      g.strokeRect(x0, y, w, h);
+      g.fillStyle = picked ? `rgba(${a}, 0.22)` : 'rgba(255,255,255,0.04)';
+      g.fillRect(x0, y, w * v, h);
+      if (picked) {
+        g.strokeStyle = `rgb(${a})`;
+        g.lineWidth = 2.2;
+        g.strokeRect(x0, y, w * v, h);
+      }
+      g.fillStyle = picked ? `rgb(${a})` : 'rgba(255,255,255,0.6)';
+      g.textAlign = 'right';
+      g.fillText(label, x0 - 14, y + h / 2 + 5);
+      g.textAlign = 'left';
+      if (picked) g.fillText('← selected', x0 + w * v + 12, y + h / 2 + 5);
+    });
+    g.fillStyle = 'rgba(255,255,255,0.5)';
+    g.font = '12px "JetBrains Mono", monospace';
+    g.fillText('six classifiers · three objectives each', x0 - 14, 118);
+  },
+
+  // 16. Dog Breed — five backbones fused into one head
+  'dog-breed-id'(g, a) {
+    const names = ['MobileNetV2', 'ResNet152V2', 'Xception', 'NASNetLarge', 'VGG19'];
+    // Five rows inside the crop band: 5 × 34 + 4 × 10 = 210 px, from 118 to 328.
+    const bx = 92, bw = 168, bh = 34, top = 118, gap = 10;
+    const jx = 470, jy = top + (names.length * (bh + gap) - gap) / 2;
+    g.font = '12px "JetBrains Mono", monospace';
+    names.forEach((n, i) => {
+      const y = top + i * (bh + gap);
+      g.strokeStyle = `rgba(${a}, 0.45)`;
+      g.lineWidth = 1.3;
+      g.fillStyle = 'rgba(255,255,255,0.03)';
+      g.fillRect(bx, y, bw, bh);
+      g.strokeRect(bx, y, bw, bh);
+      g.fillStyle = 'rgba(255,255,255,0.66)';
+      g.fillText(n, bx + 14, y + bh / 2 + 4);
+      g.strokeStyle = `rgba(${a}, 0.5)`;
+      g.beginPath();
+      g.moveTo(bx + bw, y + bh / 2);
+      g.lineTo(jx - 26, jy);
+      g.stroke();
+    });
+
+    // Fusion node, then the expansion, then the head
+    g.strokeStyle = `rgb(${a})`;
+    g.lineWidth = 2;
+    g.beginPath(); g.arc(jx, jy, 22, 0, Math.PI * 2); g.stroke();
+    g.fillStyle = `rgb(${a})`;
+    g.font = '18px "JetBrains Mono", monospace';
+    g.textAlign = 'center';
+    g.fillText('+', jx, jy + 6);
+    g.font = '12px "JetBrains Mono", monospace';
+    g.beginPath(); g.moveTo(jx + 24, jy); g.lineTo(jx + 68, jy); g.stroke();
+    g.strokeRect(jx + 68, jy - 26, 172, 52);
+    g.fillText('poly³ → 302,621', jx + 154, jy - 2);
+    g.fillStyle = 'rgba(255,255,255,0.6)';
+    g.fillText('dense head · 120 classes', jx + 154, jy + 18);
+    g.textAlign = 'left';
+  },
+
+  // 17. Cats and Dogs App — frozen base, shippable head
+  'cats-dogs-app'(g, a) {
+    const x = 110, y = 150, w = 580, h = 150;
+    g.font = '13px "JetBrains Mono", monospace';
+
+    // Upload panel
+    g.strokeStyle = `rgba(${a}, 0.45)`;
+    g.lineWidth = 1.4;
+    g.setLineDash([6, 5]);
+    g.strokeRect(x, y, 150, h);
+    g.setLineDash([]);
+    g.fillStyle = 'rgba(255,255,255,0.6)';
+    g.fillText('upload', x + 46, y + h / 2 + 5);
+
+    // Frozen VGG16 base — hatched, to read as "not trained here"
+    const fx = x + 190;
+    g.strokeStyle = `rgba(${a}, 0.5)`;
+    g.strokeRect(fx, y, 190, h);
+    g.save();
+    g.beginPath(); g.rect(fx, y, 190, h); g.clip();
+    g.strokeStyle = `rgba(${a}, 0.14)`;
+    g.lineWidth = 1;
+    for (let i = -h; i < 190; i += 12) {
+      g.beginPath(); g.moveTo(fx + i, y + h); g.lineTo(fx + i + h, y); g.stroke();
+    }
+    g.restore();
+    g.fillStyle = 'rgba(255,255,255,0.72)';
+    g.fillText('VGG16 · frozen', fx + 40, y + h / 2 - 6);
+    g.fillStyle = 'rgba(255,255,255,0.45)';
+    g.font = '11px "JetBrains Mono", monospace';
+    g.fillText('pretrained, never trained', fx + 22, y + h / 2 + 16);
+
+    // The one artefact that actually ships
+    const cx2 = fx + 230;
+    g.font = '13px "JetBrains Mono", monospace';
+    g.strokeStyle = `rgb(${a})`;
+    g.lineWidth = 2.2;
+    g.fillStyle = `rgba(${a}, 0.16)`;
+    g.fillRect(cx2, y + 30, 160, 90);
+    g.strokeRect(cx2, y + 30, 160, 90);
+    g.fillStyle = `rgb(${a})`;
+    g.fillText('logreg head', cx2 + 30, y + 68);
+    g.fillText('197 KB', cx2 + 50, y + 92);
+
+    // Connectors
+    g.strokeStyle = `rgba(${a}, 0.55)`;
+    g.lineWidth = 1.5;
+    [[x + 150, fx], [fx + 190, cx2]].forEach(([a1, b1]) => {
+      g.beginPath(); g.moveTo(a1 + 6, y + h / 2); g.lineTo(b1 - 6, y + h / 2); g.stroke();
+    });
   }
 };
 
@@ -1056,6 +1227,13 @@ function renderProjectsGrid(filter = 'all') {
       if (proj.media.type === 'video') { mediaIcon = 'fa-play'; mediaLabel = 'VIDEO'; }
       else if (proj.media.type === 'embed') { mediaIcon = 'fa-play'; mediaLabel = 'VIDEO'; }
       else if (proj.media.type === 'gif') { mediaIcon = 'fa-film'; mediaLabel = 'GIF'; }
+      /* `repo` is work whose only artefact is public source — a notebook or an
+         app in a GitHub repository. It has no demo panel and no footage, so the
+         pill must not inherit the default INTERACTIVE label and promise one. */
+      else if (proj.media.type === 'repo') {
+        mediaIcon = 'fa-code-branch';
+        mediaLabel = proj.media.badge === 'NOTEBOOK' ? 'NOTEBOOK' : 'SOURCE';
+      }
       // Plate galleries are not interactive demos — say what they actually are.
       else if (proj.media.type === 'gallery') {
         mediaIcon = 'fa-images';
