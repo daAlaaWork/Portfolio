@@ -288,6 +288,56 @@ const practiceProjects = [
     ]
   },
   {
+    id: 'pcg-spline-path',
+    tier: 'practice',
+    badge: 'PROCEDURAL PCG',
+    category: 'procedural',
+    title: 'Spline Path & Fence Generator — UE5 PCG',
+    meta: 'Unreal Engine 5 · PCG Framework · Splines · 2026',
+    tech: 'Unreal Engine 5 · PCG Framework · Spline Sampling · Static Mesh Spawning',
+    desc: 'A spline-based procedural path and fence generator built with Unreal Engine 5’s PCG framework. Drop a spline across any terrain and it auto-populates walk mesh, base mesh and fence mesh along the path.',
+    detail: 'Built as a reusable environment-art tool for faster terrain traversal and boundary dressing in large open-world or archviz scenes. The spline is the whole interface: draw it across the terrain and the PCG graph populates walk mesh, base mesh and fence mesh along it, with path width, grid length and spline segment count exposed as controls rather than buried in the graph.',
+    proof: 'Video demonstration on the author’s YouTube channel, 2026.',
+    status: 'built',
+    capabilities: ['pcg', 'unreal-runtime', 'ux-tooling', 'geometry'],
+    spine: {
+      proves: 'I turn environment dressing into something an artist drives with a spline instead of placing by hand.'
+    },
+    media: {
+      type: 'embed',
+      embedId: 'OW4AEGGXvhE',
+      thumb: 'https://img.youtube.com/vi/OW4AEGGXvhE/maxresdefault.jpg',
+      poster: 'https://img.youtube.com/vi/OW4AEGGXvhE/maxresdefault.jpg',
+      badge: 'VIDEO',
+      caption: 'Spline-driven PCG path and fence generation across terrain.'
+    }
+  },
+  {
+    id: 'ue5-inventory-system',
+    tier: 'practice',
+    badge: 'GAMEPLAY UI SYSTEM',
+    category: 'systems',
+    title: 'Modular Inventory System — UE5 Blueprints',
+    meta: 'Unreal Engine 5 · Blueprints · UMG · Sep 2026',
+    tech: 'Unreal Engine 5 · Blueprints · UMG · Data-Driven Item Definitions',
+    desc: 'A modular, data-driven inventory system built in Unreal Engine 5 — tabbed item categories, stat-linked tooltips and a live currency HUD, all driven through Blueprints.',
+    detail: 'Built as part of ongoing UE5 gameplay-systems and UI-programming work, aimed at reusable, artist-friendly frameworks rather than one-off game logic. Item categories are tabs, tooltips read from the item’s own stats, and the currency HUD tracks state live — so extending the inventory is a data change, not a new widget each time.',
+    proof: 'Video demonstration (0:52) on the author’s YouTube channel, Sep 2026.',
+    status: 'built',
+    capabilities: ['unreal-runtime', 'ux-tooling'],
+    spine: {
+      proves: 'I build gameplay UI as a reusable framework driven by data, so the people adding content do not need me to add a screen.'
+    },
+    media: {
+      type: 'embed',
+      embedId: 'pVyim1doJQE',
+      thumb: 'https://img.youtube.com/vi/pVyim1doJQE/maxresdefault.jpg',
+      poster: 'https://img.youtube.com/vi/pVyim1doJQE/maxresdefault.jpg',
+      badge: 'VIDEO',
+      caption: 'Modular inventory — tabbed categories, stat-linked tooltips, live currency HUD.'
+    }
+  },
+  {
     id: 'archviz-automation',
     tier: 'practice',
     badge: 'PIPELINE AUTOMATION',
